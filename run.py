@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 print(__name__)
 app = Flask(__name__)
 
@@ -7,15 +7,10 @@ app = Flask(__name__)
 def hello_world():
     items = ["Apfel", "Birne", "Banana"]
 
-    output = ""
-    for item in items:
-        output += "<h3>" + item + "</h3>"
-
-    return output
-#    return 'Hello, World!'
+    return render_template("start.html", name="Max Mustermann", items=items)
 
 @app.route('/test')
 def test():
-    paragraph = "<p>Halloooo Welt</p>"
-    return "Hello <strong>Test</strong>!" + paragraph
+    return render_template("test.html", name="Max Mustermann")
+
 
